@@ -13,6 +13,7 @@ const authRoute = require('./routes/auth')
 const categoryRoute = require('./routes/categories') 
 const userRoute = require('./routes/user')
 const productRoute = require('./routes/product')
+const upload =require('./routes/upload')
 
 
 // /**
@@ -40,7 +41,7 @@ app.use('/api/users', authRoute);
 app.use('/api/category', categoryRoute)
 app.use('/api/profile', userRoute)
 app.use('/api/product', productRoute)
-
+app.use('/api',upload)
 
 // app.get('/api/config/paypal', (req, res) =>
 //   res.send(process.env.PAYPAL_CLIENT_ID)
