@@ -1,5 +1,18 @@
 const cloudinary = require('cloudinary')
+const fs = require('fs')
 
+const removeTmp = (path) =>{
+    fs.unlink(path, err=>{
+        if(err) throw err;
+    })
+}
+
+// we will upload image on cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
+})
 exports.uploadeImages = (req, res) => {
     try {
         if(!req.files || Object.keys(req.files).length === 0)
@@ -48,9 +61,3 @@ exports.deleteImages = (req, res) =>{
     
 }
 
-
-exports.removeTmp = (path) =>{
-    fs.unlink(path, err=>{
-        if(err) throw err;
-    })
-}
